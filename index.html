@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smallTalk.app</title>
+    <link rel="stylesheet" href="./styles.css">
+    
+</head>
+<body>
+    <!--Navigation-->
+    <div style="display: flex; justify-content: center;">
+        <div id="nav">
+            <a href="">Home</a>
+            <a href="">Profile</a>
+        </div>
+    </div>
+    
+    <div #id="pageWrapper">
+
+    <!--Header-->
+    <div class="headerWrapper">
+        <div>
+            <h1 id="head">Welcome to <span id="small">small</span>Talk. 👋</h1>
+            <p>This is a <a href="https://blog.hubspot.com/marketing/micro-blogging">microblogging site</a> stripped down to it's most basic elements.</p>
+        </div>
+    </div>
+    <!--Microblog-->
+    <div class="compositionWrapper">
+        <div id="composition">
+            <p>Get started below! ✨</p>
+            <div id="attachments">
+                <button><i onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="img" class="fa-regular fa-image" style="color: #ffffff;"></i></button>
+                <button><i class="fa-solid fa-video" style="color: #ffffff;" onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="video"></i></button>
+                <button><i onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="location" class="fa-solid fa-location-dot" style="color: #ffffff;"></i></button>
+                <div id="compositionDots">
+                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot0"></div>
+                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot1"></div>
+                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot2"></div>
+                </div>
+            </div>
+
+            <textarea onkeyup="remainingChars(); composing();" onkeydown="remainingChars(); composing();" id="composeTalk"></textarea>
+            <div id="postInfo" style="margin-bottom: 10px;">
+                <div>
+                    <span id="charCount">99</span><span> characters remaining</span>
+                </div>
+                <button onclick="postTalk()" id="post">post</button>
+            </div>
+
+            <p id="warning">Oops, that's big talk 😬</p>
+
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+    <script src="https://kit.fontawesome.com/e7e56e69bc.js" crossorigin="anonymous"></script>
+</body>
+</html>
