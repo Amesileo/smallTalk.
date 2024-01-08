@@ -1,17 +1,20 @@
 let warning = document.getElementById("warning");
 const warningOG = warning.innerText;
-let textArea = document.getElementById("composeTalk");
+const textArea = document.getElementById("composeTalk");
+const charCounter = document.getElementById("charCount");
+const postBtn = document.getElementById("post");
 let i = 0;
 let typing = false;
+let public = true;
     
 function remainingChars() {
 
     let charCount = textArea.value.length;
-    document.getElementById("charCount").innerText=(99 - charCount);
+    charCounter.innerText=(99 - charCount);
         
     if (charCount > 99) {
-        document.getElementById("charCount").style.color="red";
-        document.getElementById("charCount").innerText="-" + (charCount - 99);
+        charCounter.style.color="red";
+        charCounter.innerText="-" + (charCount - 99);
         warning.style.display="block";
         warning.style.backgroundColor="";
         warning.style.color="";
@@ -24,7 +27,7 @@ function remainingChars() {
         }
 
     } else {
-        document.getElementById("charCount").style.color="cornflowerblue";
+        charCounter.style.color="cornflowerblue";
         warning.style.display="";
     }
 }
@@ -45,16 +48,15 @@ function composing() {
     if (textArea.value.length > 0) {
         
         typing = true;
-        if (textArea.value.length < 99) {
-            document.getElementById("post").style.backgroundColor="cornflowerblue";
+        if (textArea.value.length < 100) {
+            postBtn.style.backgroundColor="cornflowerblue";
         } else {
-            document.getElementById("post").style.backgroundColor="rgb(164, 164, 164)";
+            postBtn.style.backgroundColor="rgb(164, 164, 164)";
         }
 
         for (let i = 0; i < document.getElementById("compositionDots").children.length; i++){
             
             setTimeout(function() { 
-                //document.getElementById("compositionDots").style.display="flex";
                 document.getElementById("compositionDots").style.transition="all 1s ease";
                 document.getElementById("compositionDots").style.opacity=1;
                 document.getElementById("compositionDots").children[i].classList.add("composingAnim");
@@ -72,13 +74,37 @@ function composing() {
 
 function removeDots() {
 
-    document.getElementById("post").style.backgroundColor="rgb(164, 164, 164)";
+    postBtn.style.backgroundColor="rgb(164, 164, 164)";
     document.getElementById("compositionDots").style.transition="all 0s ease";
     typing = false;
     let i = 0;
     for (let i = 0; i < document.getElementById("compositionDots").children.length; i++){
         document.getElementById("compositionDots").children[i].classList.remove("composingAnim");
         document.getElementById("compositionDots").style.opacity=0;
-        //document.getElementById("compositionDots").style.display="none";
+    }
+}
+
+function postTalk() {
+    
+    const blogPost = document.createElement("div");
+    const blogPostContent = document.createTextNode(textArea.value);
+    blogPost.appendChild(blogPostContent);
+    const feed = document.getElementById("feed");
+    feed.parentNode.insertBefore(blogPost, feed);
+    textArea.value="";
+    composing();
+    remainingChars();
+}
+
+function setPrivacy(id) {
+
+    public = !public;
+
+    if (public === true) {
+        document.getElementById(id).parentElement.style.backgroundColor="cornflowerblue"
+        document.getElementById(id).lastChild.innerText=" public"
+    } else {
+        document.getElementById(id).parentElement.style.backgroundColor="rgb(83, 200, 163)"
+        document.getElementById(id).lastChild.innerText=" friends"
     }
 }

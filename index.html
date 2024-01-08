@@ -9,10 +9,11 @@
 </head>
 <body>
     <!--Navigation-->
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center">
         <div id="nav">
-            <a href="">Home</a>
-            <a href="">Profile</a>
+            <a href=""><i class="fa-solid fa-home" style="color:#ffffff"></i></a>
+            <a href=""><i class="fa-solid fa-message" style="color: #ffffff;"></i></a>
+            <a href=""><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
         </div>
     </div>
     
@@ -31,26 +32,33 @@
             <p>Get started below! ✨</p>
             <div id="attachments">
                 <button><i onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="img" class="fa-regular fa-image" style="color: #ffffff;"></i></button>
-                <button><i class="fa-solid fa-video" style="color: #ffffff;" onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="video"></i></button>
+                <button><i onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="video" class="fa-solid fa-video" style="color: #ffffff;"></i></button>
                 <button><i onmouseover="spinIcon(id);" onmouseleave="stopIcon(id);" id="location" class="fa-solid fa-location-dot" style="color: #ffffff;"></i></button>
+                <button><i onclick="setPrivacy(id);" id="privacy" class="fa-solid fa-eye" style="color: #ffffff;"><span style="font-weight: 500; color: #ffffff;"> public</span></i></button>
+
                 <div id="compositionDots">
-                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot0"></div>
-                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot1"></div>
-                    <div style="margin: 2px; background-color: #ffffff; display: absolute; width:5px; height: 5px; border-radius: 10px;" id="dot2"></div>
+                    <div class="dot" id="dot0"></div>
+                    <div class="dot" id="dot1"></div>
+                    <div class="dot" id="dot2"></div>
                 </div>
             </div>
 
-            <textarea onkeyup="remainingChars(); composing();" onkeydown="remainingChars(); composing();" id="composeTalk"></textarea>
+            <textarea onkeyup="remainingChars(); composing();" onkeydown="remainingChars(); composing();" id="composeTalk" placeholder="Make smallTalk here..."></textarea>
             <div id="postInfo" style="margin-bottom: 10px;">
                 <div>
                     <span id="charCount">99</span><span> characters remaining</span>
                 </div>
-                <button onclick="postTalk()" id="post">post</button>
+                <button onclick="postTalk();" style="font-weight: 500; color: #ffffff;" id="post">post</button>
             </div>
 
             <p id="warning">Oops, that's big talk 😬</p>
 
             </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="feedWrapper">
+            <div id="feed"></div>
         </div>
     </div>
     <script src="./app.js"></script>

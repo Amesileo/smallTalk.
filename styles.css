@@ -38,7 +38,7 @@ a:hover {
     background-color: cornflowerblue;
     padding: 10px;
     border-radius: 5px;
-    justify-content: space-between;
+    justify-content: right;
 }
 
 #nav a {
@@ -47,6 +47,10 @@ a:hover {
     padding-right: 10px;
     gap: 5px;
     color: whitesmoke;
+}
+
+#nav a:first-child {
+    margin-right: auto;
 }
 
 #nav a:hover {
@@ -166,6 +170,15 @@ button:hover {
     transition: all 1s ease;
 }
 
+.dot {
+    margin: 2px;
+    background-color: #ffffff;
+    display: absolute;
+    width:5px;
+    height: 5px;
+    border-radius: 10px;
+}
+
 .composingAnim {
     animation: jump 1s forwards infinite alternate;
 }
@@ -191,4 +204,13 @@ button:hover {
         opacity: 1;
     }
     
+}
+
+.feedWrapper {
+    display: flex; 
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 710px;
+    min-width: 300px;
 }
