@@ -103,8 +103,14 @@ function setPrivacy(id) {
     if (public === true) {
         document.getElementById(id).parentElement.style.backgroundColor="cornflowerblue"
         document.getElementById(id).lastChild.innerText=" public"
+        if(document.getElementById(id).classList.contains("fa-eye-low-vision")) {
+            document.getElementById(id).classList.remove("fa-eye-low-vision");
+            document.getElementById(id).classList.add("fa-eye");
+        }
     } else {
         document.getElementById(id).parentElement.style.backgroundColor="rgb(83, 200, 163)"
         document.getElementById(id).lastChild.innerText=" friends"
+        document.getElementById(id).classList.remove("fa-eye");
+        document.getElementById(id).classList.add("fa-eye-low-vision");
     }
 }
